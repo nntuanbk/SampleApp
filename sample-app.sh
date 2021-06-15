@@ -12,13 +12,13 @@ echo "RUN pip install flask" >> tempdir/Dockerfile #instal flask -python webapp 
 echo "COPY ./static /home/myapp/static/" >> tempdir/Dockerfile #copy static folder to Docker container. Create /home/myapp as parent directory inside Docker container
 echo "COPY ./templates /home/myapp/templates/" >> tempdir/Dockerfile #copy templates folder to Docker container
 echo "COPY sample_app.py /home/myapp/" >> tempdir/Dockerfile #copy sample_app.py file to Doker container
-echo "EXPOSE 8080" >> tempdir/Dockerfile #expose port 8080 for using by the webserver
+echo "EXPOSE 5000" >> tempdir/Dockerfile #expose port 8080 for using by the webserver
 echo "CMD python3 /home/myapp/sample_app.py" >> tempdir/Dockerfile #run sample_app.py in docker container
 #build the docker container
 cd tempdir
 docker build -t sampleapp .
 #start the container with name samplerunning from docker samepleapp image
-docker run -t -d -p 8080:8080 --name samplerunning sampleapp
+docker run -t -d -p 5000:5000 --name samplerunning sampleapp
 #show docker process
 docker ps -a
 
